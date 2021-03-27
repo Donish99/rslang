@@ -1,9 +1,22 @@
 .wrapper {
-    position: relative;
-    height: 80vh;
-    margin: 25px 0;
-    background-color: #FFF;
+    display: flex;
+    justify-content: space-around;
+    height: 500px;
+    margin: 35px 0;
+    padding: 20px 60px;
+    background-color: #ffffff;
     border-radius: 34px;
     color: rgb(0, 0, 0);
-    font-size: 50px;
+    line-height: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.img {
+    width: 13.8rem;
+    height: 14rem;
+    margin: 0 auto;
 }
