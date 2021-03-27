@@ -8,7 +8,6 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        {/* <Nav.Link href="#features">Учебник</Nav.Link> */}
                         <NavDropdown title="Учебник" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#wordList">Список слов</NavDropdown.Item>
                             <NavDropdown.Item href="#dictionary">Словарь</NavDropdown.Item>
@@ -26,7 +25,6 @@ const Header = () => {
                     <Nav>
                         <Button variant="light" className="mr-2 rounded-pill">Регистрация</Button>
                         <Button variant="dark" className="mr-2 rounded-pill">Войти</Button>
-                        {/* <Button variant="secondary">Выйти</Button> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
