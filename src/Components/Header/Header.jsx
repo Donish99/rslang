@@ -1,15 +1,31 @@
 import { Navbar, Nav, NavDropdown, Button, Container, Modal, Form } from 'react-bootstrap';
 import { useState } from 'react';
+import { login } from "../../services/authService"
 
 const Header = () => {
 
     const [showRegister, setShowRegister] = useState(false);
     const handleCloseRegister = () => setShowRegister(false);
-    const handleshowRegister = () => setShowRegister(true);
+    const handleShowRegister = () => setShowRegister(true);    
 
-    const [showEnter, setShowEnter] = useState(false);
-    const handleCloseEnter = () => setShowEnter(false);
-    const handleshowEnter = () => setShowEnter(true);
+    const [showSignIn, setShowSignIn] = useState(false);
+    const handleCloseSignIn = () => setShowSignIn(false);
+    const handleShowSignIn = () => setShowSignIn(true);
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleChangeEmailSignIn = (event) => {
+        setEmail(event.target.value)
+    }
+
+    const handleChangePasswordSignIn = (event) => {
+        setPassword(event.target.value)
+    }
+
+    const handleSubmitSignIn = (e) => {
+        login(email, password)
+    }
 
     return (
         <>
@@ -34,10 +50,10 @@ const Header = () => {
                             <Nav.Link href="#Statistic">Статистика</Nav.Link>
                         </Nav>
                         <Nav>
-                            <Button variant="light" className="mr-2 rounded-pill" onClick={handleshowRegister}>
+                            <Button variant="light" className="mr-2 rounded-pill" onClick={handleShowRegister}>
                                 Регистрация
                             </Button>
-                            <Button variant="dark" className="mr-2 rounded-pill" onClick={handleshowEnter}>
+                            <Button variant="dark" className="mr-2 rounded-pill" onClick={handleShowSignIn}>
                                 Войти
                             </Button>
                         </Nav>
@@ -50,10 +66,10 @@ const Header = () => {
                     <Modal.Title>Регистрация</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form >
                         <Form.Group controlId="formBasicName">
                             <Form.Label>Имя пользователя</Form.Label>
-                            <Form.Control type="name" placeholder="Имя пользователя" />
+                            <Form.Control type="text" placeholder="Имя пользователя" />
                         </Form.Group>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email</Form.Label>
@@ -67,31 +83,41 @@ const Header = () => {
                             <Form.Check type="checkbox" label="Запомнить меня" />
                         </Form.Group>
                         <Button variant="dark" type="submit">
-                            Отпарвить
+                            Зарегистрироваться
                         </Button>
                     </Form>
                 </Modal.Body>
             </Modal>
 
-            <Modal show={showEnter} onHide={handleCloseEnter}>
+            <Modal show={showSignIn} onHide={handleCloseSignIn}>
                 <Modal.Header closeButton>
                     <Modal.Title>Вход</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form onSubmit={handleSubmitSignIn}>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="Email" />
+                            <Form.Control 
+                                type="text"
+                                placeholder="Email" 
+                                value={email} 
+                                onChange={handleChangeEmailSignIn}
+                            />
                         </Form.Group>
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Пароль</Form.Label>
-                            <Form.Control type="password" placeholder="Пароль" />
+                            <Form.Control 
+                                type="password"
+                                placeholder="Пароль" 
+                                value={password} 
+                                onChange={handleChangePasswordSignIn}
+                            />
                         </Form.Group>
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Запомнить меня" />
                         </Form.Group>
                         <Button variant="dark" type="submit">
-                            Отпарвить
+                            Войти
                         </Button>
                     </Form>
                 </Modal.Body>
