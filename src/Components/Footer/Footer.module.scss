@@ -1,10 +1,13 @@
 .wrapper {
+    position: absolute;
+    bottom: 0;   
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    height: 210px;
+    height: 170px;
+    width: 1110px;
     margin-top: 35px;
-    padding: 15px 30px;
+    padding: 10px 30px;
     background-color: #ffa51e;
     border-top-left-radius: 34px;
     border-top-right-radius: 34px;
@@ -21,6 +24,7 @@
 
 .link {
     display: flex;
+    padding: 5px 0;
 }
 
 .contactsTitle {  
