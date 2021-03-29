@@ -4,7 +4,9 @@ import { ToastContainer } from "react-toastify";
 import Footer from "./../Footer/Footer";
 import MainPage from "./../MainPage/MainPage";
 import "react-toastify/dist/ReactToastify.css";
-import "./App.css";
+import style from "./App.module.scss";
+
+
 
 // Just an example
 import authService from "./../../services/authService";
@@ -21,7 +23,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="bg-light">
+    <div className={`${style.wrapper} bg-light`}>
       <ToastContainer />
       <Header />
       <Router>
