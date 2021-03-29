@@ -6,11 +6,13 @@ import MainPage from "./../MainPage/MainPage";
 import GamesMain from "./../Games/GamesMain.jsx";
 import Game from "../Games/Game";
 import "react-toastify/dist/ReactToastify.css";
-import "./App.css";
+import style from "./App.module.scss";
+
+
 
 const App = () => {
   return (
-    <div className="bg-light">
+    <div className={`${style.wrapper} bg-light`}>
       <ToastContainer />
       <Header />
       <Router>
