@@ -3,7 +3,6 @@ import Header from "./../Header/Header";
 import { ToastContainer } from "react-toastify";
 import Footer from "./../Footer/Footer";
 import MainPage from "./../MainPage/MainPage";
-import RegistrationForm from "../RegistrationForm/RegistratinForm";
 import "react-toastify/dist/ReactToastify.css";
 import style from "./App.module.scss";
 
@@ -29,7 +28,6 @@ const App = () => {
       <Header />
       <Router>
         <Route exact path="/" component={MainPage} />
-        <Route path="/registration" component={RegistrationForm} />
       </Router>
       <Footer />
     </div>
