@@ -8,6 +8,7 @@ import Sergey from './../../../assets/images/Sergey.jpg'
 
 const AboutCommand = () => {
     return (
+        <div className={styles.container}>
         <div className={styles.wrapper}>
             <Card style={{ width: '14rem' }} className={`${styles.card} bg-light border-warning`}>
                 <Card.Img variant="top" src={Akhmadullo} className={styles.img} />
@@ -48,6 +49,7 @@ const AboutCommand = () => {
                     <Card.Link href="https://github.com/SergeyDanchenko">Git Hub</Card.Link>
                 </Card.Body>
             </Card>
+        </div>
         </div>
     )
 }

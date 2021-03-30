@@ -6,7 +6,9 @@ import MainPage from "./../MainPage/MainPage";
 import GrupSection from '../Electronic-textbook/GrupSection/GrupSection';
 import Words from '../Electronic-textbook/WordList/WordList';
 import "react-toastify/dist/ReactToastify.css";
-import "./App.css";
+import style from "./App.module.scss";
+
+
 
 // Just an example
 import authService from "./../../services/authService";
@@ -23,7 +25,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="bg-light">
+    <div className={`${style.wrapper} bg-light`}>
       <ToastContainer />
       <Header />
       <Router>
