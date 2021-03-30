@@ -18,7 +18,7 @@ const Header = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const [isLogged, setLogged] = useState(null)
+    const [isLogged, setLogged] = useState(authService.getJwt())
 
     const handleChangeEmailLogIn = (event) => {
         setEmail(event.target.value);
@@ -73,12 +73,6 @@ const Header = () => {
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#bookSettings">Настройки учебника</NavDropdown.Item>
                             </NavDropdown>
-                            {/* <NavDropdown title="Игры" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#Savanna">Саванна</NavDropdown.Item>
-                            <NavDropdown.Item href="#Call">Аудиовызов</NavDropdown.Item>
-                            <NavDropdown.Item href="#Sprint">Спринт</NavDropdown.Item>
-                            <NavDropdown.Item href="#MyGame">Своя игра</NavDropdown.Item>
-                        </NavDropdown> */}
                             <Nav.Link href="#Games">Игры</Nav.Link>
                             <Nav.Link href="#Statistic">Статистика</Nav.Link>
                         </Nav>
