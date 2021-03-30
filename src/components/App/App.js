@@ -3,6 +3,7 @@ import Header from "./../Header/Header";
 import { ToastContainer } from "react-toastify";
 import Footer from "./../Footer/Footer";
 import MainPage from "./../MainPage/MainPage";
+import GrupSection from '../Electronic-textbook/GrupSection/GrupSection';
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -12,7 +13,7 @@ import { useEffect } from "react";
 
 const authExample = async () => {
   const data = await authService.login("admin@admin.com", "AdminAdmin");
-  console.log(data);
+  // console.log(data);
 };
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
       <Header />
       <Router>
         <Route exact path="/" component={MainPage} />
+        <Route exact path="/wordSection" component={GrupSection} />
       </Router>
       <Footer />
     </div>
