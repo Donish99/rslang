@@ -12,15 +12,15 @@ import style from "./App.module.scss";
 import authService from "./../../services/authService";
 import { useEffect } from "react";
 
-const authExample = async () => {
-  const data = await authService.login("admin@admin.com", "AdminAdmin");
-  console.log(data);
-};
+// const authExample = async () => {
+//   const data = await authService.login("admin@admin.com", "AdminAdmin");
+//   console.log(data);
+// };
 
 const App = () => {
-  useEffect(() => {
-    authExample();
-  }, []);
+  // useEffect(() => {
+  //   authExample();
+  // }, []);
 
   return (
     <div className={`${style.wrapper} bg-light`}>

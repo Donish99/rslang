@@ -13,7 +13,7 @@ const Footer = () => {
                     <Nav.Item className={styles.contactItem}>
                         <Nav.Link className={styles.link} href="https://github.com/Donish99">
                             <Image className={styles.icon} src={gitHubIcon} fluid />
-                            <div className={styles.contactsTitle}>Ахмадулло Нурмакхаматов</div>
+                            <div className={styles.contactsTitle}>Ахмадулло Нурмахаматов</div>
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item className={styles.contactItem}>
