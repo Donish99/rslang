@@ -6,7 +6,10 @@ import MainPage from "./../MainPage/MainPage";
 import "react-toastify/dist/ReactToastify.css";
 import style from "./App.module.scss";
 
+import PrivateRoute from '../PrivateRoute/PrivateRoute'
+import PublicRoute from '../PublicRoute/PublicRoute'
 
+import AboutCommand from '../Slides/AboutCommand/AboutCommand'
 
 // Just an example
 import authService from "./../../services/authService";
@@ -27,7 +30,11 @@ const App = () => {
       <ToastContainer />
       <Header />
       <Router>
-        <Route exact path="/" component={MainPage} />
+        <PublicRoute exact path="/" component={MainPage} />
+
+         {/* {below "AboutCommand" change to necessary component} */}
+        <PrivateRoute component={AboutCommand} path="/Games" exact />
+        <PrivateRoute component={AboutCommand} path="/Statistic" exact />
       </Router>
       <Footer />
     </div>

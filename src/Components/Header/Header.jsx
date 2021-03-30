@@ -18,7 +18,7 @@ const Header = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const [isLoggedIn, setLogged] = useState(null)
+    const [isLogged, setLogged] = useState(null)
 
     const handleChangeEmailLogIn = (event) => {
         setEmail(event.target.value);
@@ -40,7 +40,7 @@ const Header = () => {
     }
 
     let buttonRegister;
-    if (!isLoggedIn) {
+    if (!isLogged) {
         buttonRegister = <Button variant="light" className="mr-2 rounded-pill" onClick={handleShowRegister}>
         Регистрация
     </Button>
@@ -49,7 +49,7 @@ const Header = () => {
     }
 
     let buttonLog;
-    if (!isLoggedIn) {
+    if (!isLogged) {
         buttonLog = <Button variant="dark" className="mr-2 rounded-pill" onClick={handleShowLogIn}>
                         Войти
                     </Button>;
