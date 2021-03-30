@@ -3,6 +3,7 @@ import { apiUrl } from "../config";
 
 const apiEndpoint = apiUrl + "/signin";
 const tokenKey = "token";
+const userId = "userId";
 
 http.setJwt(getJwt());
 
@@ -12,7 +13,10 @@ export function getJwt() {
 
 export async function login(email, password) {
   const { data } = await http.post(apiEndpoint, { email, password });
+  console.log(data)
   localStorage.setItem(tokenKey, data.token);
+  localStorage.setItem(userId, data.userId);
+
   return data;
 }
 
@@ -22,6 +26,7 @@ export function loginWithJwt(jwt) {
 
 export function logout() {
   localStorage.removeItem(tokenKey);
+  localStorage.removeItem(userId);
 }
 const authService = {
   login,
