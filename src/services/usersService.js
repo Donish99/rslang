@@ -8,8 +8,8 @@ const getIdUrl = (id) => `${apiEndpoint}/${id}`;
 const headers = {
   "Content-Type": "application/json",
 };
+
 function register(user) {
-  console.log(user);
   const data = {
     password: user.password,
     email: user.email,
@@ -17,6 +17,7 @@ function register(user) {
   };
   return axios.post(apiEndpoint, data, { headers: headers });
 }
+
 function getUser(id) {
   return http.get(getIdUrl(id));
 }
@@ -24,6 +25,7 @@ function getUser(id) {
 function deleteUser(id) {
   return http.delete(getIdUrl(id));
 }
+
 function updateUser(id, updatedUser) {
   return http.delete(getIdUrl(id), {
     email: updatedUser.email,
@@ -31,9 +33,11 @@ function updateUser(id, updatedUser) {
   });
 }
 
-export default {
+const usersService = {
   register,
   getUser,
   deleteUser,
   updateUser,
 };
+
+export default usersService;

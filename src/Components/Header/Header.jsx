@@ -1,24 +1,29 @@
 import { Navbar, Nav, NavDropdown, Button, Container, Modal, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import authService from "../../services/authService"
+import usersService from "../../services/usersService"
 import styles from './Header.module.scss'
 
 const Header = () => {
 
-    //Register
     const [showRegister, setShowRegister] = useState(false);
     const handleCloseRegister = () => setShowRegister(false);
     const handleShowRegister = () => setShowRegister(true);
 
-    //Log
     const [showLogIn, setShowLogIn] = useState(false);
     const handleCloseLogIn = () => setShowLogIn(false);
     const handleShowLogIn = () => setShowLogIn(true);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
 
     const [isLogged, setLogged] = useState(authService.getJwt())
+
+
+    const handleChangeName = (event) => {
+        setName(event.target.value);
+    }
 
     const handleChangeEmailLogIn = (event) => {
         setEmail(event.target.value);
@@ -26,6 +31,18 @@ const Header = () => {
 
     const handleChangePasswordLogIn = (event) => {
         setPassword(event.target.value);
+    }
+
+    async function handleSubmitRegister() {
+        const user = {
+            name: name,
+            email: email,
+            password: password,
+        }
+        await usersService.register(user);
+        await authService.login(user.email, user.password);
+        handleCloseRegister();
+        setLogged(authService.getJwt())
     }
 
     async function handleSubmitLogIn() {
@@ -42,8 +59,8 @@ const Header = () => {
     let buttonRegister;
     if (!isLogged) {
         buttonRegister = <Button variant="light" className="mr-2 rounded-pill" onClick={handleShowRegister}>
-        Регистрация
-    </Button>
+            Регистрация
+                        </Button>
     } else {
         buttonRegister = <></>;
     }
@@ -51,11 +68,11 @@ const Header = () => {
     let buttonLog;
     if (!isLogged) {
         buttonLog = <Button variant="dark" className="mr-2 rounded-pill" onClick={handleShowLogIn}>
-                        Войти
+            Войти
                     </Button>;
     } else {
         buttonLog = <Button variant="dark" className="mr-2 rounded-pill" onClick={handleLogOut}>
-                        Выйти
+            Выйти
                     </Button>;
     }
 
@@ -89,22 +106,40 @@ const Header = () => {
                     <Modal.Title>Регистрация</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form >
+                    <Form onSubmit={handleSubmitRegister}>
                         <Form.Group controlId="formBasicName">
                             <Form.Label>Имя пользователя</Form.Label>
-                            <Form.Control type="text" placeholder="Имя пользователя" />
+                            <Form.Control
+                                type="text"
+                                placeholder="Имя пользователя"
+                                value={name}
+                                onChange={handleChangeName}
+                            />
                         </Form.Group>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="Email" />
+                            <Form.Control
+                                type="text"
+                                placeholder="E-mail"
+                                value={email}
+                                onChange={handleChangeEmailLogIn}
+                            />
+                            <Form.Text className="text-muted">
+                                E-mail должен быть вида: email@mark.com
+                            </Form.Text>
                         </Form.Group>
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Пароль</Form.Label>
-                            <Form.Control type="password" placeholder="Пароль" />
+                            <Form.Control
+                                type="password"
+                                placeholder="Пароль"
+                                value={password}
+                                onChange={handleChangePasswordLogIn}
+                            />
+                            <Form.Text className="text-muted">
+                                Пароль должен быть не короче 8 символов и содержать хотябы одну заглавную букву
+                            </Form.Text>
                         </Form.Group>
-                        {/* <Form.Group controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Запомнить меня" />
-                    </Form.Group> */}
                         <Button variant="dark" type="submit">
                             Зарегистрироваться
                         </Button>
@@ -136,9 +171,6 @@ const Header = () => {
                                 onChange={handleChangePasswordLogIn}
                             />
                         </Form.Group>
-                        {/* <Form.Group controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Запомнить меня" />
-                    </Form.Group> */}
                         <Button variant="dark" type="submit">
                             Войти
                     </Button>
