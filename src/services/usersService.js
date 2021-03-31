@@ -15,8 +15,19 @@ function register(user) {
     email: user.email,
     name: user.name,
   };
+   axios.post(apiEndpoint, data, { headers: headers })
+  .catch(err => {
+    if( err.response.status === 417 ) {
+      alert('Пользователь с таким e-mail уже существует');
+    }
+    if( err.response.status === 422 ) {
+      alert('Вы не заполнити все поля, либо ввели некоректные данные');
+    }
+  });
   return axios.post(apiEndpoint, data, { headers: headers });
+
 }
+
 
 function getUser(id) {
   return http.get(getIdUrl(id));
