@@ -13,7 +13,6 @@ export function getJwt() {
 
 export async function login(email, password) {
   const { data } = await http.post(apiEndpoint, { email, password });
-  console.log(data)
   localStorage.setItem(tokenKey, data.token);
   localStorage.setItem(userId, data.userId);
 
@@ -25,8 +24,7 @@ export function loginWithJwt(jwt) {
 }
 
 export function logout() {
-  localStorage.removeItem(tokenKey);
-  localStorage.removeItem(userId);
+  localStorage.clear();
 }
 const authService = {
   login,
