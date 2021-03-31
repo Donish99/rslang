@@ -13,7 +13,7 @@ const AboutCommand = () => {
             <Card style={{ width: '14rem' }} className={`${styles.card} bg-light border-warning`}>
                 <Card.Img variant="top" src={Akhmadullo} className={styles.img} />
                 <Card.Body>
-                    <Card.Title>Ахмадулло Нурмакхаматов, разработчик</Card.Title>
+                    <Card.Title>Ахмадулло Нурмахаматов, разработчик</Card.Title>
                     <Card.Text>
                         Реализация Back-End, игры "....".
                     </Card.Text>
