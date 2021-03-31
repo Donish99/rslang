@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Container, ButtonGroup, Button } from "react-bootstrap";
+import { Container  } from "react-bootstrap";
 import dataDescription from "./static/info";
+import Savannah from './Savvana';
 import styles from "./Game.module.scss";
 
 const Game = ({ match }) => {
@@ -20,23 +21,7 @@ const Game = ({ match }) => {
         }}
       >
         {gameStarted ? (
-          <div className={styles.game}>
-            <div className="sound">
-              <Button size="sm" variant="light">
-                sound
-              </Button>
-            </div>
-            <div className={styles.langSwitch}>
-              <ButtonGroup>
-                <Button size="sm" variant="light">
-                  Ru
-                </Button>
-                <Button size="sm" variant="light">
-                  En
-                </Button>
-              </ButtonGroup>
-            </div>
-          </div>
+          <Savannah/>
         ) : (
           <div className={styles.info}>
             <h1>{game.name}</h1>
