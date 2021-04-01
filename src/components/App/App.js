@@ -6,6 +6,9 @@ import MainPage from "./../MainPage/MainPage";
 import "react-toastify/dist/ReactToastify.css";
 import style from "./App.module.scss";
 
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import PublicRoute from '../PublicRoute/PublicRoute';
+import AboutCommand from '../Slides/AboutCommand/AboutCommand';
 
 const App = () => {
   return (
