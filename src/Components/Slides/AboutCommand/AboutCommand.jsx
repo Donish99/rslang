@@ -1,4 +1,4 @@
-import PersonCard from '../../Card/PersonCard';
+import PersonCard from '../../Cards/PersonCard/PersonCard';
 
 import styles from './AboutCommand.module.scss'
 import Akhmadullo from './../../../assets/images/Akhmadullo.jpg'
