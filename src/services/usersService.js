@@ -38,7 +38,7 @@ function deleteUser(id) {
 }
 
 function updateUser(id, updatedUser) {
-  return http.delete(getIdUrl(id), {
+  return http.put(getIdUrl(id), {
     email: updatedUser.email,
     password: updatedUser.password,
   });

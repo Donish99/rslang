@@ -32,8 +32,7 @@ export function loginWithJwt(jwt) {
 }
 
 export function logout() {
-  localStorage.removeItem(tokenKey);
-  localStorage.removeItem(userId);
+  localStorage.clear();
 }
 const authService = {
   login,

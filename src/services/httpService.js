@@ -4,11 +4,9 @@ import { toast } from "react-toastify";
 const onSuccess = null;
 const onError = (error) => {
   const expectedError =
-    error.response &&
-    error.response.status >= 400 &&
-    error.response.status < 500;
+    error?.response?.status >= 400 && error?.response?.status < 500;
 
-  if (!expectedError) {
+  if (expectedError) {
     console.error(error);
     toast.error("An unexpected error occurrred.");
   }

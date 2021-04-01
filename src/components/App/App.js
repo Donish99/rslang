@@ -6,25 +6,8 @@ import MainPage from "./../MainPage/MainPage";
 import "react-toastify/dist/ReactToastify.css";
 import style from "./App.module.scss";
 
-import PrivateRoute from '../PrivateRoute/PrivateRoute'
-import PublicRoute from '../PublicRoute/PublicRoute'
-
-import AboutCommand from '../Slides/AboutCommand/AboutCommand'
-
-// Just an example
-import authService from "./../../services/authService";
-import { useEffect } from "react";
-
-// const authExample = async () => {
-//   const data = await authService.login("admin@admin.com", "AdminAdmin");
-//   console.log(data);
-// };
 
 const App = () => {
-  // useEffect(() => {
-  //   authExample();
-  // }, []);
-
   return (
     <div className={`${style.wrapper} bg-light`}>
       <ToastContainer />
