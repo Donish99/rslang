@@ -6,13 +6,18 @@ import MainPage from "./../MainPage/MainPage";
 import "react-toastify/dist/ReactToastify.css";
 import style from "./App.module.scss";
 
+
 const App = () => {
   return (
     <div className={`${style.wrapper} bg-light`}>
       <ToastContainer />
       <Header />
       <Router>
-        <Route exact path="/" component={MainPage} />
+        <PublicRoute exact path="/" component={MainPage} />
+
+         {/* {below "AboutCommand" change to necessary component} */}
+        <PrivateRoute component={AboutCommand} path="/Games" exact />
+        <PrivateRoute component={AboutCommand} path="/Statistic" exact />
       </Router>
       <Footer />
     </div>
