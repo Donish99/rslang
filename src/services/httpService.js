@@ -3,8 +3,23 @@ import { toast } from "react-toastify";
 
 const onSuccess = null;
 const onError = (error) => {
+
+  const userExistError =
+    error?.response?.status === 417;
+
+  const userEnterError =
+    error?.response?.status === 404;
+
   const expectedError =
-    error?.response?.status >= 400 && error?.response?.status < 500;
+    error?.response?.status >= 400 && error?.response?.status < 500 ;
+
+  if (userExistError) {
+    return error;
+  } 
+
+  if (userEnterError) {
+    return error;
+  }
 
   if (expectedError) {
     console.error(error);
