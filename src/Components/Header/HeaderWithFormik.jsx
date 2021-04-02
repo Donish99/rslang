@@ -40,66 +40,58 @@ const Header = () => {
 
     const formikRegistr = useFormik({
         initialValues: {
-            name: 'Foobar',
-            email: '1foobar@example.com',
-            password: '1234567T',
+            name: '',
+            email: '',
+            password: '',
         },
         validationSchema: validationSchemaRegister,
-
         onSubmit: async (values) => {
+            const user = {
+                name: values.name,
+                email: values.email,
+                password: values.password,
+            }
+            await usersService.register(user)
+                .catch(err => {
+                    console.log('user');
+                    console.log('status', err.response.status);
+                    console.log('data', err.response.data);
+                    // if (err.response.status === 417) {
+                    //     alert('Пользователь с таким e-mail уже существует');
+                    // }
+                    // if (err.response.status === 422) {
+                    //     alert('Вы не заполнити все поля, либо ввели некоректные данные');
+                    // }
+                })
+            await authService.login(user.email, user.password);
+            handleCloseRegister();
+            setLogged(authService.getJwt())
         }
-    });
-
-    async function submitFormRegister(values) {
-        // console.log(values)
-        const user = {
-            name: values.name,
-            email: values.email,
-            password: values.password,
-        }
-        // console.log(user)
-        await usersService.register(user)
-            .catch(err => {
-                console.log('user');
-                console.log('status', err.response.status);
-                console.log('message', err.response.message);
-                if (err.response.status === 417) {
-                    alert('Пользователь с таким e-mail уже существует');
-                }
-                if (err.response.status === 422) {
-                    alert('Вы не заполнити все поля, либо ввели некоректные данные');
-                }
-            })
-        await authService.login(user.email, user.password);
-        handleCloseRegister();
-        setLogged(authService.getJwt())
-    }
+    });   
 
     const formikLogIn = useFormik({
         initialValues: {
-            email: 'foobar@example.com',
-            password: '1234567T',
+            email: '',
+            password: '',
         },
         validationSchema: validationSchemaLogIn,
         onSubmit: async (values) => {
-        }
-    });
-
-    async function submitFormLogIn(values) {
-        await authService.login(values.email, values.password)
+            await authService.login(values.email, values.password)
             .catch(err => {
-                if (values.email === "" || err.response.status === 403) {
-                    alert('Вы не заполнити все поля, либо ввели некоректные данные')
-                } else if (err.response.status === 404) {
+                // if (values.email === "" || err.response.status === 403) {
+                //     alert('Вы не заполнити все поля, либо ввели некоректные данные')
+                // } 
+                if (err.response.status === 404) {
                     alert('Пользователя с таким e-mail не существует')
                 }
                 console.log('auth')
                 console.log('status', err.response.status)
-                console.log('message', err.response.message)
+                console.log('data', err.response.data)
             });
         handleCloseLogIn();
         setLogged(authService.getJwt())
-    }
+        }
+    });    
 
     const [showRegister, setShowRegister] = useState(false);
     const handleCloseRegister = () => setShowRegister(false);
@@ -166,17 +158,12 @@ const Header = () => {
                     <Modal.Title>Регистрация</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* <form onSubmit={formikRegistr.handleSubmit}> */}
-                    <form onSubmit={e => {
-                        e.preventDefault();
-                        submitFormRegister(formikRegistr.values)
-                    }}>
-                        {/* }}> */}
+                    <form onSubmit={formikRegistr.handleSubmit}>
                         <TextField
                             fullWidth
                             id="name"
                             name="name"
-                            label="Имя"
+                            label="Введите имя"
                             value={formikRegistr.values.name}
                             onChange={formikRegistr.handleChange}
                             error={formikRegistr.touched.name && Boolean(formikRegistr.errors.name)}
@@ -186,7 +173,7 @@ const Header = () => {
                             fullWidth
                             id="email"
                             name="email"
-                            label="Email"
+                            label="Введите Email"
                             value={formikRegistr.values.email}
                             onChange={formikRegistr.handleChange}
                             error={formikRegistr.touched.email && Boolean(formikRegistr.errors.email)}
@@ -196,7 +183,7 @@ const Header = () => {
                             fullWidth
                             id="password"
                             name="password"
-                            label="Пароль"
+                            label="Введите пароль"
                             type="password"
                             value={formikRegistr.values.password}
                             onChange={formikRegistr.handleChange}
@@ -214,11 +201,7 @@ const Header = () => {
                     <Modal.Title>Вход</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <form
-                        onSubmit={e => {
-                            e.preventDefault();
-                            submitFormLogIn(formikLogIn.values)
-                        }}>
+                    <form onSubmit={formikLogIn.handleSubmit}>
                         <TextField
                             fullWidth
                             id="email"
