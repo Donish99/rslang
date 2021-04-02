@@ -1,5 +1,6 @@
 import { HashRouter as Router, Route } from "react-router-dom";
 import Header from "./../Header/Header";
+import HeaderWithFormik from "./../Header/HeaderWithFormik";
 import { ToastContainer } from "react-toastify";
 import Footer from "./../Footer/Footer";
 import MainPage from "./../MainPage/MainPage";
@@ -14,7 +15,7 @@ const App = () => {
   return (
     <div className={`${style.wrapper} bg-light`}>
       <ToastContainer />
-      <Header />
+      <HeaderWithFormik />
       <Router>
         <PublicRoute exact path="/" component={MainPage} />
 
