@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Container  } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import dataDescription from "./static/info";
-import Savannah from './Savvana';
+import Savannah from "./Savvana/Savvana";
 import styles from "./Game.module.scss";
 
 const Game = ({ match }) => {
@@ -21,7 +21,7 @@ const Game = ({ match }) => {
         }}
       >
         {gameStarted ? (
-          <Savannah/>
+          <Savannah />
         ) : (
           <div className={styles.info}>
             <h1>{game.name}</h1>

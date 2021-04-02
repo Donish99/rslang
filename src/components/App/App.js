@@ -8,8 +8,6 @@ import Game from "../Games/Game";
 import "react-toastify/dist/ReactToastify.css";
 import style from "./App.module.scss";
 
-
-
 const App = () => {
   return (
     <div className={`${style.wrapper} bg-light`}>
@@ -20,7 +18,7 @@ const App = () => {
         <Route exact path="/games" component={GamesMain} />
         <Route exact path="/games/:id" component={Game} />
       </Router>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
