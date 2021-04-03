@@ -10,6 +10,17 @@ import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+        main: '#ffa51e',
+      },
+  },
+});
+
 
 const validationSchemaRegister = yup.object().shape({
     name: yup
@@ -121,7 +132,7 @@ const Header = ({ history }) => {
 
     let buttonRegister;
     if (!isLogged) {
-        buttonRegister = <Button variant="light" className="mr-2 rounded-pill" onClick={handleShowRegister}>
+        buttonRegister = <Button color="primary" variant="contained" className="mr-2 rounded-pill"  onClick={handleShowRegister}>
             Регистрация
                         </Button>
     } else {
@@ -129,18 +140,19 @@ const Header = ({ history }) => {
     }
 
     let buttonLog;
-    if (!isLogged) {
-        buttonLog = <Button variant="dark" className="mr-2 rounded-pill" onClick={handleShowLogIn}>
+    if (!isLogged) { 
+        buttonLog = <Button color="primary" variant="contained" className="mr-2 rounded-pill"  onClick={handleShowLogIn}>
             Войти
                     </Button>;
     } else {
-        buttonLog = <Button variant="dark" className="mr-2 rounded-pill" onClick={handleLogOut}>
+        buttonLog = <Button color="primary" variant="contained" className="mr-2 rounded-pill" onClick={handleLogOut}>
             Выйти
                     </Button>;
     }
 
     return (
         <>
+        <ThemeProvider theme={theme}>
             <Navbar collapseOnSelect expand="lg" variant="light" bg="light">
                 <Container>
                     <Navbar.Brand href="#">Rs-Lang</Navbar.Brand>
@@ -203,7 +215,7 @@ const Header = ({ history }) => {
                             error={formikRegistr.touched.password && Boolean(formikRegistr.errors.password)}
                             helperText={formikRegistr.touched.password && formikRegistr.errors.password}
                         />
-                        <Button color="primary" variant="contained" fullWidth type="submit">
+                        <Button color="primary" variant="contained" className="mt-3 rounded-pill" fullWidth type="submit">
                             Зарегистрироваться
                     </Button>
                     </form>
@@ -238,12 +250,13 @@ const Header = ({ history }) => {
                             error={formikLogIn.touched.password && Boolean(formikLogIn.errors.password)}
                             helperText={formikLogIn.touched.password && formikLogIn.errors.password}
                         />
-                        <Button color="primary" variant="contained" fullWidth type="submit">
+                        <Button color="primary" variant="contained" className="mt-3 rounded-pill" fullWidth type="submit">
                             Войти
                     </Button>
                     </form>
                 </Modal.Body>
             </Modal>
+            </ThemeProvider>
         </>
     )
 }
