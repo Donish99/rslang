@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import dataDescription from "./static/info";
-import Savannah from "./Savvana/Savvana";
+import dataDescription from "../static/info";
+import Savannah from "../Savvana/Savvana";
 import styles from "./Game.module.scss";
 
 const Game = ({ match }) => {

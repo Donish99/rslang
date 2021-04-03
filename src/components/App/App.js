@@ -3,8 +3,8 @@ import Header from "./../Header/Header";
 import { ToastContainer } from "react-toastify";
 import Footer from "./../Footer/Footer";
 import MainPage from "./../MainPage/MainPage";
-import GamesMain from "./../Games/GamesMain.jsx";
-import Game from "../Games/Game";
+import GamesMain from "./../Games/GamesMain/GamesMain.jsx";
+import Game from "../Games/Game/Game";
 import "react-toastify/dist/ReactToastify.css";
 import style from "./App.module.scss";
 
