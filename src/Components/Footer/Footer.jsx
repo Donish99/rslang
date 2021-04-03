@@ -15,24 +15,22 @@ const Footer = () => (
                     gitHubLink="https://github.com/IrinaKorbut" fullName="Ирина Корбут"
                 />
                 <FooterNavItem
-                    gitHubLink="https://github.com/SergeyDanchenko"
-                    fullName="Сергей Данченко"
-                />
-                <FooterNavItem
                     gitHubLink="https://github.com/IvanoPro"
                     fullName="Иван Казанов"
                 />
             </Nav>
-            <Nav>
-                <Nav.Item>
-                    <Nav.Link href="https://rs.school/">
-                        <Image className={styles.logo} src={logo_rsSchool} fluid />
-                    </Nav.Link>
-                </Nav.Item>
-            </Nav>
-            <div className={styles.year}>
-                2021
+            <div className={styles.logoYearContainer}>
+                <Nav>
+                    <Nav.Item>
+                        <Nav.Link className={styles.nav} href="https://rs.school/">
+                            <Image className={styles.logo} src={logo_rsSchool} fluid />
+                        </Nav.Link>
+                    </Nav.Item>
+                </Nav>
+                <div className={styles.year}>
+                    2021
                 </div>
+            </div>        
         </div>
     </Container>
 );
