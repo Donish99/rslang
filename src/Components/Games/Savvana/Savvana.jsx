@@ -29,10 +29,10 @@ function shuffle(array) {
 
   return array;
 }
-const initialState = {
+const getInitialState = () => ({
   gameOver: false,
   fallPosition: 0,
-  sound: true,
+  sound: false,
   english: true,
   lives: [true, true, true],
   userWords: [],
@@ -45,30 +45,41 @@ const initialState = {
     wrong: new Audio(wrongSound),
     right: new Audio(rightSound),
   },
-};
+});
 
 class Savvannah extends Component {
-  state = initialState;
+  state = getInitialState();
 
-  async newGame() {
-    this.setState(initialState);
+  newGame = async () => {
+    try {
+      this.setState(getInitialState());
 
-    const { userWords } = this.state;
-    await userWordApi.getAllWords().then((res) => {
-      res.data.map((r) =>
-        userWordApi.getWord(r.wordId).then(({ data }) => {
-          let list = userWords;
-          list.push(data);
-          this.setState({ userWords: [...list] });
-        })
-      );
-    });
-    const { data } = await userWordApi.getRand3Words();
-    this.setState({
-      optionWords: shuffle([...data[0].paginatedResults, userWords[0]]),
-    });
-    this.initiateMovemet();
-  }
+      const { userWords } = this.state;
+      await userWordApi.getAllWords().then((res) => {
+        res.data.map((r) =>
+          userWordApi.getWord(r.wordId).then(({ data }) => {
+            this.setState((prev) => {
+              let list = prev.userWords;
+              list.push(data);
+              return { userWords: [...list] };
+            });
+          })
+        );
+      });
+      const { data } = await userWordApi.getRand3Words();
+      this.setState((prev) => {
+        return {
+          optionWords: shuffle([
+            ...data[0].paginatedResults,
+            prev.userWords[0],
+          ]),
+        };
+      });
+      this.initiateMovemet();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   async componentDidMount() {
     this.newGame();
@@ -100,8 +111,9 @@ class Savvannah extends Component {
         ...data[0].paginatedResults,
         userWords[currentIndex + 1],
       ]),
+      currentIndex: currentIndex + 1,
+      fallPosition: 0,
     });
-    this.setState({ currentIndex: currentIndex + 1, fallPosition: 0 });
     this.initiateMovemet();
   }
 
