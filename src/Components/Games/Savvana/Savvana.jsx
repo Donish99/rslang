@@ -87,7 +87,7 @@ class Savvannah extends Component {
     this.setState({ fallPosition: fallPosition + 1 });
     if (fallPosition > 79) {
       clearInterval(timerId);
-      wrong.play();
+      if (this.state.sound) wrong.play();
       this.minusLife();
     }
   }
@@ -106,6 +106,8 @@ class Savvannah extends Component {
   }
 
   minusLife() {
+    const { wrongWords, currentIndex, userWords } = this.state;
+    this.setState({ wrongWords: [...wrongWords, userWords[currentIndex]] });
     const { lives } = this.state;
     const l = lives;
     lives.pop();
@@ -127,7 +129,7 @@ class Savvannah extends Component {
       currentIndex,
       userWords,
       timerId,
-      wrongWords,
+
       correctWords,
     } = this.state;
     clearInterval(timerId);
@@ -135,7 +137,7 @@ class Savvannah extends Component {
     const currentWord = userWords[currentIndex];
     const id = word.id || word._id;
     if (id === currentWord.id) {
-      right.play();
+      if (this.state.sound) right.play();
       this.setState({ correctWords: [...correctWords, currentWord] }, () => {
         if (
           currentIndex !== userWords.length &&
@@ -147,18 +149,16 @@ class Savvannah extends Component {
         }
       });
     } else {
-      wrong.play();
+      if (this.state.sound) wrong.play();
 
-      this.setState({ wrongWords: [...wrongWords, currentWord] }, () => {
-        this.minusLife();
-      });
+      this.minusLife();
     }
   }
 
   render() {
     const {
       wrongWords,
-      rightWords,
+      correctWords,
       fallPosition,
       sound,
       english,
@@ -174,7 +174,7 @@ class Savvannah extends Component {
         {gameOver ? (
           <GameStat
             wrongList={wrongWords}
-            rightList={rightWords}
+            correctWords={correctWords}
             callBack={this.newGame}
           />
         ) : (
@@ -188,9 +188,9 @@ class Savvannah extends Component {
                   onClick={() => this.setState({ sound: !sound })}
                 >
                   {sound ? (
-                    <FontAwesomeIcon icon={faVolumeMute} />
-                  ) : (
                     <FontAwesomeIcon icon={faVolumeUp} />
+                  ) : (
+                    <FontAwesomeIcon icon={faVolumeMute} />
                   )}
                 </Button>
                 <ButtonGroup>

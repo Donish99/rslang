@@ -19,17 +19,34 @@
   padding: 10px;
 }
 
-.corrects {
+.wrongs {
   flex-grow: 2;
+  overflow: auto;
 }
 
-.wrongs {
+.corrects {
+  border-bottom: 1px solid rgb(196, 185, 185);
+  overflow: auto;
   flex-grow: 2;
   position: relative;
 }
 
 .actionButtons {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 10px;
+  right: 10px;
+}
+
+.wordContainer {
+  margin-top: 5px;
+  display: flex;
+}
+
+p {
+  margin: -5px 0 0 10px;
+}
+
+h4 {
+  border-bottom: 2px solid black;
+  text-align: center;
 }
