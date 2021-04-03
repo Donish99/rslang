@@ -1,3 +1,13 @@
 .modal {
     width: 100vw !important;
 }
+
+.errorMessage {
+    font-size: 18px;
+    color: red;
+}
+.errorMessageHidden {
+    user-select: none;
+    font-size: 18px;
+    color: #fff;
+}
