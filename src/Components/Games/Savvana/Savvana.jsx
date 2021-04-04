@@ -54,7 +54,6 @@ class Savvannah extends Component {
     try {
       this.setState(getInitialState());
 
-      const { userWords } = this.state;
       await userWordApi.getAllWords().then((res) => {
         res.data.map((r) =>
           userWordApi.getWord(r.wordId).then(({ data }) => {

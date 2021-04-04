@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import dataDescription from "../static/info";
 import Savannah from "../Savvana/Savvana";
+import AudioCall from "./../AudioCall/AudioCall";
 import styles from "./Game.module.scss";
+import Savvannah from "../Savvana/Savvana";
 
 const Game = ({ match }) => {
   const [game, setGame] = useState({});
@@ -12,6 +14,20 @@ const Game = ({ match }) => {
       if (d.id === parseInt(match.params.id)) setGame(d);
     });
   });
+
+  const getGame = () => {
+    switch (game.id) {
+      case 1:
+        return <Savvannah />;
+        break;
+      case 2:
+        return <AudioCall />;
+        break;
+      default:
+        return <h1>404</h1>;
+    }
+  };
+
   return (
     <Container>
       <div
@@ -21,7 +37,7 @@ const Game = ({ match }) => {
         }}
       >
         {gameStarted ? (
-          <Savannah />
+          getGame()
         ) : (
           <div className={styles.info}>
             <h1>{game.name}</h1>
