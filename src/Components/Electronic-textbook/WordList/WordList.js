@@ -1,81 +1,128 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import wordsApi from '../../../services/wordService';
-import './WordList.scss';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import wordsApi from "../../../services/wordService";
+import { apiUrl } from "./../../../config";
 
-class Words extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            words: null,
-            pages: 0,
-        }
+import "./WordList.scss";
+
+class WordList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      select: 0,
+      words: null,
+      pages: 0,
+    };
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
+  async getData() {
+    const data = await wordsApi.getwords(
+      this.props.match.params.id,
+      this.state.pages
+    );
+    this.setState({ words: data.data });
+  }
+
+  clickLeft = () => {
+    if (this.state.pages !== 0) {
+      this.setState({ pages: this.state.pages - 1 });
+      this.getData();
+    } else {
+      return null;
     }
+  };
 
-    async componentDidMount() {
-        const data = await wordsApi.getwords(this.props.itemId, this.state.pages)
-        this.setState({ words: data.data })
+  clickRight = () => {
+    if (this.state.pages !== 29) {
+      this.setState({ pages: this.state.pages + 1 });
+      this.getData();
+    } else {
+      return null;
     }
+  };
 
-    clickNaz() {
-        if (this.state.pages !== 0) {
-            this.setState({ pages: this.state.pages - 1 })
-            this.componentDidMount()
-        } else {
-            return null
-        }
+  clickDelete = () => {
+    console.log("minus");
+  };
+
+  clickPlus = () => {
+    console.log("plus");
+  };
+
+  selectUp = () => {
+    const { id } = this.props.match.params;
+    if (id < 6) {
+      this.props.history.push(`/wordSection/${parseInt(id) + 1}`);
+      this.getData();
     }
+  };
 
-    clickGo() {
-        if (this.state.pages !== 29) {
-            this.setState({ pages: this.state.pages + 1 })
-            this.componentDidMount()
-        } else {
-            return null
-        }
+  selectDown = () => {
+    const { id } = this.props.match.params;
+    if (id > 0) {
+      this.props.history.push(`/wordSection/${parseInt(id) - 1}`);
+      this.getData();
     }
+  };
 
-    render() {
-        console.log(this.state.words)
-        const { itemId } = this.props
-        let grup = Number(itemId) + 1
-        const { words, pages } = this.state
-        if (words !== null) {
-            return (
-                <>
-                    <div className='turnPeges'>
-                        <span className='fas fa-angle-down iconSelect'></span>
-                        <span>{`раздел ${grup}`}</span>
-                        <span className='fas fa-angle-up iconSelect'></span>
-                    </div>
+  render() {
+    console.log(this.state.words);
+    const { words, pages } = this.state;
+    if (words !== null) {
+      return (
+        <>
+          <div className="turnPeges">
+            <span
+              className="fas fa-angle-down iconSelect"
+              onClick={this.selectDown}
+            ></span>
+            <span>{`раздел ${this.props.match.params.id}`}</span>
+            <span
+              className="fas fa-angle-up iconSelect"
+              onClick={this.selectUp}
+            ></span>
+          </div>
 
-                    {words.map(e => (
-                        <div key={e.id} className='wordsItem'>
-                            <div>{e.word}: {e.transcription} - {e.wordTranslate}
-                                <span className='fas fa-bullhorn mar'></span>
-                                <span className="fas fa-plus-square mar"></span>
-                                <span className="fas fa-minus-square mar"></span>
-                            </div>
-                            <div>{e.textExample}</div>
-                            <div>{e.textExampleTranslate}</div>
-                            <div>{e.textMeaning}</div>
-                            <div>{e.textMeaningTranslate}</div>
-                            <img className='wordsImg' src={`https://rs-team-58.herokuapp.com/${e.image}`} alt='foto' />
-                        </div>
-                    ))}
-                    <div className='turnPeges'>
-                        <span className="fas fa-angle-left" onClick={this.clickNaz.bind(this)}></span>
-                        <span className='coutPeges'>{pages + 1}</span>
-                        <span className="fas fa-angle-right" onClick={this.clickGo.bind(this)}></span>
-                    </div>
-                </>
-            )
-        } else {
-            return <></>
-        }
+          {words.map((e) => (
+            <div key={e.id} className="wordsItem">
+              <div>
+                {e.word}: {e.transcription} - {e.wordTranslate}
+                
+                {/*<span
+                  className="fas fa-plus-square mar"
+                  onClick={this.clickPlus}
+                ></span>
+                <span
+                  className="fas fa-minus-square mar"
+                  onClick={this.clickDelete}
+                ></span>*/}
+              </div>
+              <div>{e.textExample}</div>
+              <div>{e.textExampleTranslate}</div>
+              <div>{e.textMeaning}</div>
+              <div>{e.textMeaningTranslate}</div>
+              <img
+                className="wordsImg"
+                src={`${apiUrl}/${e.image}`}
+                alt="foto"
+              />
+            </div>
+          ))}
+          <div className="turnPeges">
+            <span className="fas fa-angle-left" onClick={this.clickLeft}></span>
+            <span className="coutPeges">{pages + 1}</span>
+            <span className="fas fa-angle-right" onClick={this.clickRight}></span>
+          </div>
+        </>
+      );
+    } else {
+      return <></>;
     }
+  }
 }
 
-export default withRouter(Words)
-
-
+export default withRouter(WordList);

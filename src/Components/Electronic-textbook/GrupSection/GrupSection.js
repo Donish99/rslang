@@ -4,8 +4,8 @@ import { CardColumns, Card } from 'react-bootstrap';
 import './GrupSection.css';
 
 export default class GrupSection extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             items: [
                 { id: 0, section: 'section1', text: 'text1' },

@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Footer from "./../Footer/Footer";
 import MainPage from "./../MainPage/MainPage";
 import GrupSection from '../Electronic-textbook/GrupSection/GrupSection';
-import Words from '../Electronic-textbook/WordList/WordList';
+import WordList from '../Electronic-textbook/WordList/WordList';
 import "react-toastify/dist/ReactToastify.css";
 import style from "./App.module.scss";
 
@@ -31,10 +31,7 @@ const App = () => {
       <Router>
         <Route exact path="/" component={MainPage} />
         <Route exact path="/wordSection" component={GrupSection} />
-        <Route path="/wordSection/:id" render={({ match }) => {
-          const { id } = match.params;
-          return <Words itemId={id} />
-        }} />
+        <Route path="/wordSection/:id" component= {WordList}/>
       </Router>
       <Footer />
     </div>
