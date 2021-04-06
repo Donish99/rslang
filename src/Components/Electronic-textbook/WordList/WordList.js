@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import wordsApi from "../../../services/wordService";
 import { apiUrl } from "./../../../config";
+import Music from "./Music/Music";
 
+import './Music/Music.scss';
 import "./WordList.scss";
 
 class WordList extends Component {
@@ -91,7 +93,7 @@ class WordList extends Component {
             <div key={e.id} className="wordsItem">
               <div>
                 {e.word}: {e.transcription} - {e.wordTranslate}
-                
+                <Music audioEl={e} />
                 {/*<span
                   className="fas fa-plus-square mar"
                   onClick={this.clickPlus}
