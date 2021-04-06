@@ -1,0 +1,57 @@
+.game {
+  border-radius: 34px;
+  height: 100%;
+  width: 100%;
+  color: white;
+  background: rgb(0, 0, 0, 0.3);
+  padding: 20px;
+  position: relative;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon {
+  margin-left: 5px;
+}
+
+.options {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.option {
+  border-radius: 5px;
+  padding: 3px;
+  background-color: rgba(235, 228, 219, 0.596);
+  margin: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: rgb(117, 115, 111);
+}
+
+.falling {
+  height: 12%;
+  border-radius: 5px;
+  padding: 2px;
+  background-color: rgba(235, 228, 219, 0.596);
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  cursor: none;
+}
+
+.fallingArea {
+  position: relative;
+  width: 100%;
+  height: 45%;
+}

@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 600px;
+  margin: 35px 5px;
+  background-color: #ffffff;
+  border-radius: 34px;
+  color: rgb(0, 0, 0);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-size: cover;
+}
+
+.info {
+  flex-direction: column;
+  border-radius: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  color: white;
+  background: rgb(0, 0, 0, 0.7);
+  padding: 20px;
+}
