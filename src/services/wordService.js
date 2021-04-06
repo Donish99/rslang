@@ -4,7 +4,9 @@ import { apiUrl } from "../config";
 const apiEndpoint = apiUrl + "/words";
 
 function getwords(group, page) {
-  return http.get(`${apiEndpoint}?group=${group}&page=${page}`);
+  return http.get(apiEndpoint, {
+    params: { group, page },
+  });
 }
 
 const wordsApi = {
