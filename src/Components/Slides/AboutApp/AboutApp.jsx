@@ -1,47 +1,38 @@
-import { Card } from 'react-bootstrap';
+import FeatureCard from '../../Cards/FeatureCard/FeatureCard'
 
 import styles from './AboutApp.module.scss'
-import girl from './../../../assets/images/main-page-girl.png'
+import online from './../../../assets/images/online.png'
+import game from './../../../assets/images/game.png'
+import ebook from './../../../assets/images/ebook.png'
+import statistic from './../../../assets/images/statistic.png'
 
 const AboutAppSlide = () => {
     return (
         <div className={styles.wrapper}>
-            <Card style={{ width: '14rem' }} className={`${styles.card} bg-light border-warning`}>
-                <Card.Img variant="top" src={girl} />
-                <Card.Body>
-                    <Card.Title>Онлайн доступ</Card.Title>
-                    <Card.Text>
-                        Вы можете использовать наше приложение когда и где вам удобно, глваное иметь доступ в интернет.
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-            <Card style={{ width: '14rem' }} className={`${styles.card} bg-light border-warning`}>
-                <Card.Img variant="top" src={girl} />
-                <Card.Body>
-                    <Card.Title>Игры</Card.Title>
-                    <Card.Text>
-                    Изучении чего-либо во время игр становится более интересным. Веселое изучение английского языка поможет легче усвоить новый материал.
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-            <Card style={{ width: '14rem' }} className={`${styles.card} bg-light border-warning`}>
-                <Card.Img variant="top" src={girl} />
-                <Card.Body>
-                    <Card.Title>Электронный учебник</Card.Title>
-                    <Card.Text>
-                        Тут вы можете узнать новые слова, их произношения, объяснение и посмотреть пример с данным словом.
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-            <Card style={{ width: '14rem' }} className={`${styles.card} bg-light border-warning`}>
-                <Card.Img variant="top" src={girl} />
-                <Card.Body>
-                    <Card.Title>Статистика</Card.Title>
-                    <Card.Text>
-                        Здесь вы можете следить за прогрессом изучения слов в кратскосрочном и долгосрчоном периоде.
-                    </Card.Text>
-                </Card.Body>
-            </Card>
+            <FeatureCard 
+                imgSrc={ online }
+                title="Онлайн доступ"
+                text="Вы можете использовать наше приложение когда и где вам удобно, главное иметь доступ в интернет."
+
+            />
+            <FeatureCard 
+                imgSrc={ game }
+                title="Игры"
+                text="Изучении чего-либо во время игр становится более интересным. Веселое изучение английского языка поможет легче усвоить новый материал."
+
+            />
+            <FeatureCard 
+                imgSrc={ ebook }
+                title="Электронный учебник"
+                text="Тут вы можете узнать новые слова, их произношения, объяснение и посмотреть пример с данным словом."
+
+            />
+            <FeatureCard 
+                imgSrc={ statistic }
+                title="Статистика"
+                text="Здесь вы можете следить за прогрессом изучения слов в кратскосрочном и долгосрчоном периоде."
+
+            />
         </div>
     )
 }
