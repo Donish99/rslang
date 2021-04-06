@@ -2,33 +2,16 @@ import React, { Component } from "react";
 import { ButtonGroup, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import GameStat from "../GameStat/GameStat";
-import userWordApi from "./../../../services/userWordService";
 import wrongSound from "../static/wrong.mp3";
 import rightSound from "../static/right.wav";
+import styles from "./Savanna.module.scss";
+import utilFunctions from "./../AudioCall/util";
 import {
   faHeartbeat,
   faVolumeMute,
   faVolumeUp,
 } from "@fortawesome/free-solid-svg-icons";
 
-import styles from "./Savanna.module.scss";
-
-function shuffle(array) {
-  var currentIndex = array.length,
-    temporaryValue,
-    randomIndex;
-
-  while (0 !== currentIndex) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
 const getInitialState = () => ({
   gameOver: false,
   fallPosition: 0,
@@ -51,37 +34,24 @@ class Savvannah extends Component {
   state = getInitialState();
 
   newGame = async () => {
-    try {
-      this.setState(getInitialState());
-
-      await userWordApi.getAllWords().then((res) => {
-        res.data.map((r) =>
-          userWordApi.getWord(r.wordId).then(({ data }) => {
-            this.setState((prev) => {
-              let list = prev.userWords;
-              list.push(data);
-              return { userWords: [...list] };
-            });
-          })
-        );
-      });
-      const { data } = await userWordApi.getRand3Words();
-      this.setState((prev) => {
-        return {
-          optionWords: shuffle([
-            ...data[0].paginatedResults,
-            prev.userWords[0],
-          ]),
-        };
-      });
-      this.initiateMovemet();
-    } catch (err) {
-      console.log(err);
-    }
+    this.setState(getInitialState());
+    const words = await utilFunctions.getUserWords();
+    this.setState({ userWords: words });
+    const options = await utilFunctions.getOptionWords();
+    this.setState((prev) => {
+      return {
+        optionWords: utilFunctions.shuffle([...options, prev.userWords[0]]),
+      };
+    });
+    this.initiateMovemet();
   };
 
   async componentDidMount() {
-    this.newGame();
+    try {
+      this.newGame();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   initiateMovemet() {
@@ -104,16 +74,20 @@ class Savvannah extends Component {
 
   async next() {
     const { currentIndex, userWords } = this.state;
-    const { data } = await userWordApi.getRand3Words();
-    this.setState({
-      optionWords: shuffle([
-        ...data[0].paginatedResults,
-        userWords[currentIndex + 1],
-      ]),
-      currentIndex: currentIndex + 1,
-      fallPosition: 0,
-    });
-    this.initiateMovemet();
+    if (currentIndex >= userWords.length - 1) {
+      this.gameOver();
+    } else {
+      const options = await utilFunctions.getOptionWords();
+      this.setState({
+        optionWords: utilFunctions.shuffle([
+          ...options,
+          userWords[currentIndex + 1],
+        ]),
+        currentIndex: currentIndex + 1,
+        fallPosition: 0,
+      });
+      this.initiateMovemet();
+    }
   }
 
   minusLife() {
@@ -130,7 +104,7 @@ class Savvannah extends Component {
     }
   }
 
-  gameOver(loose) {
+  gameOver() {
     this.setState({ gameOver: true });
   }
 
