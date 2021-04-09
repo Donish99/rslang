@@ -1,8 +1,8 @@
-import { HashRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import Header from "./../Header/Header";
 // import HeaderWithFormik from "./../Header/HeaderWithFormik";
 import { ToastContainer } from "react-toastify";
-import Footer from "./../Footer/Footer";
+// import Footer from "./../Footer/Footer";
 import MainPage from "./../MainPage/MainPage";
 import GrupSection from '../Electronic-textbook/GrupSection/GrupSection';
 import WordList from '../Electronic-textbook/WordList/WordList';
@@ -21,8 +21,8 @@ const App = () => {
       <ToastContainer />
       <Header />
       <Router>
-        <Route exact path="/wordSection" component={GrupSection} />
-        <Route path="/wordSection/:id" component= {WordList}/>
+        <PrivateRoute exact path="/wordSection" component={GrupSection} />
+        <PrivateRoute path="/wordSection/:id" component= {WordList}/>
         <PublicRoute exact path="/" component={MainPage} />
 
         {/* {below "AboutCommand" change to necessary component} */}

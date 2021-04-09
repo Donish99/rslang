@@ -24,6 +24,8 @@ const getInitialState = () => ({
   timerId: 0,
   wrongWords: [],
   correctWords: [],
+  color: null,
+  colors: false,
   sounds: {
     wrong: new Audio(wrongSound),
     right: new Audio(rightSound),
@@ -87,6 +89,7 @@ class Savvannah extends Component {
         fallPosition: 0,
       });
       this.initiateMovemet();
+      this.setState({color: null})
     }
   }
 
@@ -129,13 +132,16 @@ class Savvannah extends Component {
           currentIndex + 1 !== userWords.length
         ) {
           this.next();
+          this.setState({color: true})
+          this.setState({colors: true})
         } else {
           this.gameOver();
         }
       });
     } else {
       if (this.state.sound) wrong.play();
-
+      this.setState({color: true})
+      this.setState({colors: false}) 
       this.minusLife();
     }
   }
@@ -224,7 +230,7 @@ class Savvannah extends Component {
             <div className={styles.options}>
               {optionWords.map((w) => (
                 <div
-                  className={styles.option}
+                  className = {`${this.state.color ? this.state.colors ? styles.trueBtn : styles.falseBtn : styles.option}`}
                   key={w?._id || w?.id}
                   onClick={() => this.userSelect(w)}
                 >
