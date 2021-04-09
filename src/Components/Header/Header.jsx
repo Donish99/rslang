@@ -165,8 +165,8 @@ const Header = ({ history }) => {
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#bookSettings">Настройки учебника</NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link href="#Games">Игры</Nav.Link>
-                            <Nav.Link href="#Statistic">Статистика</Nav.Link>
+                            <Nav.Link href="#games">Игры</Nav.Link>
+                            <Nav.Link href="#statistic">Статистика</Nav.Link>
                         </Nav>
                         <Nav>
                             {buttonRegister}

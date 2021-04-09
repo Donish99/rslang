@@ -11,22 +11,24 @@ import style from "./App.module.scss";
 
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import PublicRoute from "../PublicRoute/PublicRoute";
-import AboutCommand from "../Slides/AboutCommand/AboutCommand";
+import Statistics from "../Statistics/Statistics";
 
 const App = () => {
   return (
     <div className={`${style.wrapper} bg-light`}>
       <ToastContainer />
       <Header />
+      <div className={ style.container }>
       <Router>
         <PublicRoute exact path="/" component={MainPage} />
 
         {/* {below "AboutCommand" change to necessary component} */}
         <PrivateRoute component={GamesMain} path="/games" exact />
         <PrivateRoute component={Game} path="/games/:id" exact />
-        <PrivateRoute component={AboutCommand} path="/Statistic" exact />
+        <PrivateRoute component={Statistics} path="/statistic" exact />
       </Router>
-      {/* <Footer /> */}
+      </div>
+      <Footer />
     </div>
   );
 };

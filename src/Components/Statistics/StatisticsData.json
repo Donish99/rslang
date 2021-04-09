@@ -1,0 +1,31 @@
+{
+    "games": {
+        "savanna": {
+            "title": "Саванна",
+            "longestRightAnswer": "3",
+            "learntWords": "10",
+            "percentRightAnswers": "100"
+        },
+
+        "audioCall": {
+            "title": "Аудиовызов",
+            "longestRightAnswer": "4",
+            "learntWords": "6",
+            "percentRightAnswers": "71"
+        },
+        
+        "sprint": {
+            "title": "Спринт",
+            "longestRightAnswer": "6",
+            "learntWords": "11",
+            "percentRightAnswers": "64"
+        },
+
+        "listening": {
+            "title": "Аудирование",
+            "longestRightAnswer": "5",
+            "learntWords": "11",
+            "percentRightAnswers": "33"
+        }
+    }
+}
