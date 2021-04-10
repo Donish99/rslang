@@ -29,7 +29,7 @@ const ShortTermStatisticsCard = ({ title, longestRightAnswer, learntWords, perce
                     <span className={styles.name}>
                         Процент правильных ответов:
                     </span> 
-                    <Progress type="circle" percent={percentRightAnswers} width={80} />
+                    <Progress type="circle" percent={percentRightAnswers} width={50} />
                 </div>
             </Card.Body>
         </Card>
