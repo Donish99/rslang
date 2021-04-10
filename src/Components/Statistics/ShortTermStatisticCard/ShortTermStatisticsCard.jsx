@@ -1,5 +1,5 @@
 import { Card } from "react-bootstrap";
-import styles from './ShortTermStatistics.module.scss';
+import styles from './ShortTermStatisticsCard.module.scss';
 import { Progress } from 'antd';
 
 

@@ -1,16 +1,13 @@
-import ShortTermStatisticsCard from './ShortTermStatisticsCard'
+import ShortTermStatisticsCard from '../ShortTermStatisticCard/ShortTermStatisticsCard'
 
 import styles from './ShortTermStatistics.module.scss';
 
-const statisticsData = require('../StatisticsData.json')
+const ShortTermStatistics = ({gamesData}) => {
 
-const ShortTermStatistics = () => {
-
-    const games = statisticsData.games;
-    const allWordsPerDay = Number(games.savanna.learntWords) + Number(games.audioCall.learntWords)
-        + Number(games.sprint.learntWords) + Number(games.listening.learntWords)
-    const persejtRightAnswersPerDay = (Number(games.savanna.percentRightAnswers) + Number(games.audioCall.percentRightAnswers)
-        + Number(games.sprint.percentRightAnswers) + Number(games.listening.percentRightAnswers)) / 4
+    const allWordsPerDay = Number(gamesData.savanna.learntWords) + Number(gamesData.audioCall.learntWords)
+        + Number(gamesData.sprint.learntWords) + Number(gamesData.listening.learntWords)
+    const persejtRightAnswersPerDay = (Number(gamesData.savanna.percentRightAnswers) + Number(gamesData.audioCall.percentRightAnswers)
+        + Number(gamesData.sprint.percentRightAnswers) + Number(gamesData.listening.percentRightAnswers)) / 4
     return (
         <div className={styles.wrapper}>
             <h3 className={styles.title}>Краткосрочная статистика</h3>
@@ -30,28 +27,28 @@ const ShortTermStatistics = () => {
             </div>
             <div className={styles.statisticsContainer}>
                 <ShortTermStatisticsCard
-                    title={games.savanna.title}
-                    longestRightAnswer={games.savanna.longestRightAnswer}
-                    learntWords={games.savanna.learntWords}
-                    percentRightAnswers={games.savanna.percentRightAnswers}
+                    title={gamesData.savanna.title}
+                    longestRightAnswer={gamesData.savanna.longestRightAnswer}
+                    learntWords={gamesData.savanna.learntWords}
+                    percentRightAnswers={gamesData.savanna.percentRightAnswers}
                 />
                 <ShortTermStatisticsCard
-                    title={games.audioCall.title}
-                    longestRightAnswer={games.audioCall.longestRightAnswer}
-                    learntWords={games.audioCall.learntWords}
-                    percentRightAnswers={games.audioCall.percentRightAnswers}
+                    title={gamesData.audioCall.title}
+                    longestRightAnswer={gamesData.audioCall.longestRightAnswer}
+                    learntWords={gamesData.audioCall.learntWords}
+                    percentRightAnswers={gamesData.audioCall.percentRightAnswers}
                 />
                 <ShortTermStatisticsCard
-                    title={games.sprint.title}
-                    longestRightAnswer={games.sprint.longestRightAnswer}
-                    learntWords={games.sprint.learntWords}
-                    percentRightAnswers={games.sprint.percentRightAnswers}
+                    title={gamesData.sprint.title}
+                    longestRightAnswer={gamesData.sprint.longestRightAnswer}
+                    learntWords={gamesData.sprint.learntWords}
+                    percentRightAnswers={gamesData.sprint.percentRightAnswers}
                 />
                 <ShortTermStatisticsCard
-                    title={games.listening.title}
-                    longestRightAnswer={games.listening.longestRightAnswer}
-                    learntWords={games.listening.learntWords}
-                    percentRightAnswers={games.listening.percentRightAnswers}
+                    title={gamesData.listening.title}
+                    longestRightAnswer={gamesData.listening.longestRightAnswer}
+                    learntWords={gamesData.listening.learntWords}
+                    percentRightAnswers={gamesData.listening.percentRightAnswers}
                 />
             </div>
         </div>
