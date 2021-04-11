@@ -10,5 +10,6 @@
 }
 
 .container {
-    min-height: calc(100vh - 150px - 56px - 40px - 30px);
+    // min-height: calc(100vh - 150px - 56px - 40px - 30px);
+    min-height: calc(100vh - 150px - 40px);
 }

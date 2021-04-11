@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import Header from "./../Header/Header";
 // import HeaderWithFormik from "./../Header/HeaderWithFormik";
 import { ToastContainer } from "react-toastify";
@@ -17,9 +17,10 @@ const App = () => {
   return (
     <div className={`${style.wrapper} bg-light`}>
       <ToastContainer />
-      <Header />
+      
       <div className={ style.container }>
       <Router>
+        <Header />
         <PublicRoute exact path="/" component={MainPage} />
 
         {/* {below "AboutCommand" change to necessary component} */}
