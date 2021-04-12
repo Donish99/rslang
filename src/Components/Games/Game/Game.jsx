@@ -5,6 +5,7 @@ import Savannah from "../Savvana/Savvana";
 import AudioCall from "./../AudioCall/AudioCall";
 import styles from "./Game.module.scss";
 import Savvannah from "../Savvana/Savvana";
+import Sprint from "../Sprint/Sprint";
 
 const Game = ({ match }) => {
   const [game, setGame] = useState({});
@@ -19,10 +20,10 @@ const Game = ({ match }) => {
     switch (game.id) {
       case 1:
         return <Savvannah />;
-        break;
       case 2:
         return <AudioCall />;
-        break;
+      case 3:
+        return <Sprint/>
       default:
         return <h1>404</h1>;
     }

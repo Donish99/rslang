@@ -15,7 +15,7 @@ import {
 const getInitialState = () => ({
   gameOver: false,
   fallPosition: 0,
-  sound: false,
+  sound: true,
   english: true,
   lives: [true, true, true],
   userWords: [],
