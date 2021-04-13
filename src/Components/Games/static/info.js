@@ -1,6 +1,7 @@
 import savvanah from "./savvanah.jpg";
 import audiocall from "./audiocall.jpg";
 import sprint from "./sprint.jpg";
+import our from "./our.jpg";
 
 const gameDescription = [
   {
@@ -10,7 +11,7 @@ const gameDescription = [
     description:
       "Мини-игра «Саванна» - это симулятор перевода пассивного выученного словаря в активную стадию.",
     instructions:
-      "После запуска игры вы увидите падающее слово на английском (или русском, если режим игры RU-> EN) и четыре варианта перевода. Выбрать правильный ответ можно двумя способами:",
+      "После запуска игры вы увидите падающее слово на английском (или русском, если режим игры RU-> EN) и четыре варианта перевода",
   },
   {
     id: 2,
@@ -18,8 +19,7 @@ const gameDescription = [
     name: "Аудиовызов",
     description:
       "Мини-игра «Аудиозвонок» - это тренировка, развивающая речевые и переводческие навыки.",
-    instructions:
-      "Вы слышите слово и видите 5 вариантов перевода. Выбрать правильный ответ можно двумя способами: ",
+    instructions: "Вы слышите слово и видите 4 вариантов перевода.",
   },
   {
     id: 3,
@@ -32,12 +32,10 @@ const gameDescription = [
   },
   {
     id: 4,
-    img: savvanah,
+    img: our,
     name: "Сваоя Игра",
-    description:
-      "The “Savannah” mini-game is a simulator for translating your passive learned dictionary into the active stage.",
-    instructions:
-      "После запуска игры вы увидите падающее слово на английском (или русском, если режим игры RU-> EN) и четыре варианта перевода. Выбрать правильный ответ можно двумя способами:",
+    description: "We need description here",
+    instructions: "We need instructions here",
   },
 ];
 

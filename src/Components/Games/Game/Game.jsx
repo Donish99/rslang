@@ -6,6 +6,7 @@ import AudioCall from "./../AudioCall/AudioCall";
 import styles from "./Game.module.scss";
 import Savvannah from "../Savvana/Savvana";
 import Sprint from "../Sprint/Sprint";
+import OurGame from "./../OurGame/OurGame";
 
 const Game = ({ match }) => {
   const [game, setGame] = useState({});
@@ -23,7 +24,9 @@ const Game = ({ match }) => {
       case 2:
         return <AudioCall />;
       case 3:
-        return <Sprint/>
+        return <Sprint />;
+      case 4:
+        return <OurGame />;
       default:
         return <h1>404</h1>;
     }
@@ -44,10 +47,6 @@ const Game = ({ match }) => {
             <h1>{game.name}</h1>
             <h4>{game.description}</h4>
             <h6>{game.instructions}</h6>
-            <p>
-              1. Используйте мышь, чтобы выбрать. <br />
-              2. Используйте клавиши «Влево» и «Вправо».
-            </p>
             <button
               className="btn btn-sm btn-primary"
               onClick={() => setGameStarted(true)}

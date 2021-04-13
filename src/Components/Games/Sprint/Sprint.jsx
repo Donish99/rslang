@@ -95,7 +95,6 @@ const Sprint = () => {
           <div className={styles.gameArea}>
             <ProgressBar now={(time * 100) / 60} />
             <div className={styles.time}>00:{time}</div>
-            <div className={styles.points}>Points: 0</div>
             <div className={styles.words}>
               <h4>{userWords[currentIndex]?.word}</h4> <h4> - </h4>
               <h4>{userWords[randIndex]?.wordTranslate}</h4>
@@ -108,7 +107,7 @@ const Sprint = () => {
             </ButtonGroup>
           </div>
         </div>
-      )}{" "}
+      )}
     </>
   );
 };

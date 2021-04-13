@@ -172,11 +172,7 @@ class Savvannah extends Component {
                   className={styles.icon}
                   onClick={() => this.setState({ sound: !sound })}
                 >
-                  {sound ? (
-                    <FontAwesomeIcon icon={faVolumeUp} />
-                  ) : (
-                    <FontAwesomeIcon icon={faVolumeMute} />
-                  )}
+                  <FontAwesomeIcon icon={sound ? faVolumeUp : faVolumeMute} />
                 </Button>
                 <ButtonGroup>
                   <Button
