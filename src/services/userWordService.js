@@ -8,6 +8,10 @@ function getAllWords() {
   return http.get(apiEndpoint);
 }
 
+function deleteWord(id) {
+  return http.delete(`${apiUrl}/users/${userId}/words/${id}`)
+}
+
 function getWord(id) {
   return http.get(`${apiUrl}/words/${id}`);
 }
@@ -32,6 +36,7 @@ const userWordApi = {
   getAllWords,
   getWord,
   getRand3Words,
+  deleteWord,
 };
 
 export default userWordApi;

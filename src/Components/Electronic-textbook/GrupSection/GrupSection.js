@@ -8,12 +8,12 @@ export default class GrupSection extends Component {
         super(props);
         this.state = {
             items: [
-                { id: 0, section: 'section1', text: 'text1' },
-                { id: 1, section: 'section2', text: 'text2' },
-                { id: 2, section: 'section3', text: 'text3' },
-                { id: 3, section: 'section4', text: 'text4' },
-                { id: 4, section: 'section5', text: 'text5' },
-                { id: 5, section: 'section6', text: 'text6' },
+                { id: 0, section: 'section 1' },
+                { id: 1, section: 'section 2' },
+                { id: 2, section: 'section 3' },
+                { id: 3, section: 'section 4' },
+                { id: 4, section: 'section 5' },
+                { id: 5, section: 'section 6' },
             ],
         }
     }
@@ -30,7 +30,6 @@ export default class GrupSection extends Component {
                                 alt='Section foto' />
                             <Card.Body>
                                 <Card.Title>{e.section}</Card.Title>
-                                <Card.Text>{e.text}</Card.Text>
                             </Card.Body>
                         </Card>
                     </Link>

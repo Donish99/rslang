@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import wordsApi from "../../../services/wordService";
 import { apiUrl } from "./../../../config";
 import Music from "./Music/Music";
+import userWordApi from "../../../services/userWordService"
 
 import './Music/Music.scss';
 import "./WordList.scss";
@@ -14,6 +15,7 @@ class WordList extends Component {
       select: 0,
       words: null,
       pages: 0,
+      active: [],
     };
   }
 
@@ -47,12 +49,17 @@ class WordList extends Component {
     }
   };
 
-  clickDelete = () => {
-    console.log("minus");
+  clickDelete = (e) => {
+    userWordApi.deleteWord(e.id)
+    this.getData();
+    
+    console.log("minus", e);
   };
 
-  clickPlus = () => {
-    console.log("plus");
+  clickPlus = (e) => {
+    const {active} = this.state
+    active.push(e.id)
+    this.setState({active: active})
   };
 
   selectUp = () => {
@@ -73,7 +80,7 @@ class WordList extends Component {
 
   render() {
     console.log(this.state.words);
-    const { words, pages } = this.state;
+    const { words, pages, active } = this.state;
     if (words !== null) {
       return (
         <>
@@ -94,14 +101,15 @@ class WordList extends Component {
               <div>
                 {e.word}: {e.transcription} - {e.wordTranslate}
                 <Music audioEl={e} />
-                {/*<span
-                  className="fas fa-plus-square mar"
-                  onClick={this.clickPlus}
+                <span
+                  className={`fas fa-plus-square margin ${active.includes(e.id) ? "active" : " " }`}
+                  onClick={() => this.clickPlus(e)}
                 ></span>
                 <span
-                  className="fas fa-minus-square mar"
-                  onClick={this.clickDelete}
-                ></span>*/}
+                  className="fas fa-minus-square margin"
+                  onClick={() => this.clickDelete(e)}
+                ></span>
+                {/* <i class="fas fa-asterisk"></i> */}
               </div>
               <div>{e.textExample}</div>
               <div>{e.textExampleTranslate}</div>
