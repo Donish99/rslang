@@ -10,7 +10,7 @@ import wrongSound from "../static/wrong.mp3";
 import rightSound from "../static/right.wav";
 
 const AudioCall = () => {
-  const [sound, setSound] = useState(false);
+  const [sound, setSound] = useState(true);
   const [gameOver, setGameOver] = useState(false);
   const [correctWords, setCorrectWords] = useState([]);
   const [wrongWords, setWrongWords] = useState([]);
@@ -45,11 +45,11 @@ const AudioCall = () => {
     try {
       setLoading(true);
       const words = await utilFunctions.getUserWords();
-      const cw = words[currentIndex];
+      const cw = words[0];
       const audio = new Audio(`${apiUrl}/${cw.audio}`);
       setCurrentAudio(audio);
       setCurrentWord(cw);
-      setWordList([...words]);
+      setWordList(words);
       const options = await utilFunctions.getOptionWords();
       setOptionWords(utilFunctions.shuffle([...options, cw]));
       audio.play();
@@ -59,9 +59,8 @@ const AudioCall = () => {
     }
   };
 
-  useEffect(() => {
-    setInitialState();
-  }, []);
+  useEffect(setInitialState, []);
+  // useEffect(() => {}, [currentIndex]);
 
   const calcPercentage = () => {
     const percent = ((currentIndex + 1) * 100) / wordList.length;
@@ -127,11 +126,7 @@ const AudioCall = () => {
             className={styles.icon}
             onClick={() => setSound((prev) => !prev)}
           >
-            {sound ? (
-              <FontAwesomeIcon icon={faVolumeUp} />
-            ) : (
-              <FontAwesomeIcon icon={faVolumeMute} />
-            )}
+            <FontAwesomeIcon icon={sound ? faVolumeUp : faVolumeMute} />
           </Button>
           <div className={styles.gameItems}>
             <div className={styles.wordImage}>

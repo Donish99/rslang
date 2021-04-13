@@ -6,7 +6,7 @@ const Player = () => {
     return (
         <div className={styles.wrapper}>
             <ReactPlayer url='https://www.youtube.com/watch?v=f4ioMGDQblI'
-                controls='true'
+                controls={true}
                 width='100%'
                 height='100%'
                 className={styles.player}

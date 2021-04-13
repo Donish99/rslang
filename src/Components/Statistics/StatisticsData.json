@@ -1,0 +1,69 @@
+{
+    "games": {
+        "savanna": {
+            "title": "Саванна",
+            "longestRightAnswer": "3",
+            "learntWords": "10",
+            "percentRightAnswers": "100"
+        },
+
+        "audioCall": {
+            "title": "Аудиовызов",
+            "longestRightAnswer": "4",
+            "learntWords": "6",
+            "percentRightAnswers": "71"
+        },
+        
+        "sprint": {
+            "title": "Спринт",
+            "longestRightAnswer": "6",
+            "learntWords": "11",
+            "percentRightAnswers": "64"
+        },
+
+        "listening": {
+            "title": "Аудирование",
+            "longestRightAnswer": "5",
+            "learntWords": "11",
+            "percentRightAnswers": "33"
+        }
+    },
+
+    "chartsData": [
+        {
+            "date": "08.04.21",
+            "wordsPerDay": 8,
+            "wordsSummaryAllTime": 8
+        },
+        {
+            "date": "09.04.21",
+            "wordsPerDay": 11,
+            "wordsSummaryAllTime": 19
+        },
+        {
+            "date": "10.04.21",
+            "wordsPerDay": 3,
+            "wordsSummaryAllTime": 22
+        },
+        {
+            "date": "11.04.21",
+            "wordsPerDay": 24,
+            "wordsSummaryAllTime": 46
+        },
+        {
+            "date": "12.04.21",
+            "wordsPerDay": 10,
+            "wordsSummaryAllTime": 56
+        },
+        {
+            "date": "13.04.21",
+            "wordsPerDay": 4,
+            "wordsSummaryAllTime": 60
+        },
+        {
+            "date": "14.04.21",
+            "wordsPerDay": 15,
+            "wordsSummaryAllTime": 75
+        }
+    ]
+}
