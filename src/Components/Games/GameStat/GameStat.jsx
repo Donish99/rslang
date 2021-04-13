@@ -36,7 +36,7 @@ const GameStat = ({ wrongList, correctWords, callBack, history }) => (
             />
             <p>
               <strong>{w.word}</strong> - {w.wordTranslate}
-            </p>{" "}
+            </p>
           </div>
         ))}
         <div className={styles.actionButtons}>

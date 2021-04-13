@@ -20,11 +20,13 @@
 }
 
 .wrongs {
+  max-height: 250px;
   flex-grow: 2;
   overflow: auto;
 }
 
 .corrects {
+  max-height: 250px;
   border-bottom: 1px solid rgb(196, 185, 185);
   overflow: auto;
   flex-grow: 2;

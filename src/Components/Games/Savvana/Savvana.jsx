@@ -15,7 +15,7 @@ import {
 const getInitialState = () => ({
   gameOver: false,
   fallPosition: 0,
-  sound: false,
+  sound: true,
   english: true,
   lives: [true, true, true],
   userWords: [],
@@ -172,11 +172,7 @@ class Savvannah extends Component {
                   className={styles.icon}
                   onClick={() => this.setState({ sound: !sound })}
                 >
-                  {sound ? (
-                    <FontAwesomeIcon icon={faVolumeUp} />
-                  ) : (
-                    <FontAwesomeIcon icon={faVolumeMute} />
-                  )}
+                  <FontAwesomeIcon icon={sound ? faVolumeUp : faVolumeMute} />
                 </Button>
                 <ButtonGroup>
                   <Button
