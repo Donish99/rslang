@@ -115,13 +115,13 @@ const OurGame = () => {
               <Form.Group controlId="input">
                 <Form.Control
                   type="text"
-                  placeholder="Input word"
+                  placeholder="Введите перевод слова"
                   value={value}
                   onChange={(e) => setValue(e.target.value)}
                 />
               </Form.Group>
               <Button variant="primary" type="submit">
-                Submit
+                Проверить
               </Button>
             </Form>
           </div>

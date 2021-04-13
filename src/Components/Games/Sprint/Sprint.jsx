@@ -101,9 +101,9 @@ const Sprint = () => {
             </div>
             <ButtonGroup>
               <Button variant="danger" onClick={() => checkAnswer(false)}>
-                False
+                Неверно
               </Button>
-              <Button onClick={() => checkAnswer(true)}>True</Button>
+              <Button onClick={() => checkAnswer(true)}>Верно</Button>
             </ButtonGroup>
           </div>
         </div>

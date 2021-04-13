@@ -51,7 +51,7 @@ const Game = ({ match }) => {
               className="btn btn-sm btn-primary"
               onClick={() => setGameStarted(true)}
             >
-              Start!
+              Поехали!
             </button>
           </div>
         )}

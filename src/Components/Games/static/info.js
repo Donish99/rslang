@@ -33,9 +33,9 @@ const gameDescription = [
   {
     id: 4,
     img: our,
-    name: "Сваоя Игра",
-    description: "We need description here",
-    instructions: "We need instructions here",
+    name: "Своя Игра",
+    description: "Введите перевод, который считаете верным.",
+    instructions: "После ввода слова нажмите «Проверить",
   },
 ];
 

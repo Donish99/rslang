@@ -6,7 +6,7 @@ const games = [
   { id: 1, name: "Саванна" },
   { id: 2, name: "Аудиовызов" },
   { id: 3, name: "Спринт" },
-  { id: 4, name: "Сваоя Игра" },
+  { id: 4, name: "Своя Игра" },
 ];
 
 const GamesMain = ({ history }) => {
@@ -26,7 +26,7 @@ const GamesMain = ({ history }) => {
           >
             <Card.Body className={`${styles.cardBody}`}>
               <Card.Title>{game.name}</Card.Title>
-              <Card.Text>play!</Card.Text>
+              <Card.Text>Играть!</Card.Text>
             </Card.Body>
           </Card>
         ))}
