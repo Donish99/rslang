@@ -1,8 +1,6 @@
 import http from "./httpService";
 import { apiUrl } from "../config";
 
-const userId = localStorage.getItem("userId");
-
 function getAllWords(group, page) {
   return http.get(apiUrl + "/words", {
     params: { group, page },
@@ -14,6 +12,7 @@ function getWord(id) {
 }
 
 function getRand3Words(group, page) {
+  const userId = localStorage.getItem("userId");
   return http.get(`${apiUrl}/users/${userId}/aggregatedWords`, {
     params: {
       group,

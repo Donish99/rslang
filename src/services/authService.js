@@ -5,8 +5,6 @@ const apiEndpoint = apiUrl + "/signin";
 const tokenKey = "token";
 const userId = "userId";
 
-http.setJwt(getJwt());
-
 export function getJwt() {
   return localStorage.getItem(tokenKey);
 }
@@ -16,6 +14,7 @@ export async function login(email, password) {
   if (data) {
     localStorage.setItem(tokenKey, data.token);
     localStorage.setItem(userId, data.userId);
+    http.setJwt(getJwt());
   }  
   return data;
 }
