@@ -8,6 +8,7 @@ function getAllWords(group, page) {
 }
 
 function deleteWord(id) {
+  const userId = localStorage.getItem("userId");
   return http.delete(`${apiUrl}/users/${userId}/words/${id}`)
 }
 
@@ -21,7 +22,7 @@ function getRand3Words(group, page) {
     params: {
       group,
       page,
-      wordsPerPage: 20,
+      wordsPerPage: 3,
     },
   });
 }
