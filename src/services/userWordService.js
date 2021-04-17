@@ -22,7 +22,7 @@ function getRand3Words(group, page) {
     params: {
       group,
       page,
-      wordsPerPage: 3,
+      wordsPerPage: 20,
     },
   });
 }
