@@ -1,5 +1,5 @@
 import http from "./httpService";
-import { apiUrl } from "../config.json";
+import { apiUrl } from "../config";
 
 const apiEndpoint = apiUrl + "/words";
 
@@ -9,6 +9,8 @@ function getwords(group, page) {
   });
 }
 
-export default {
+const wordsApi = {
   getwords,
 };
+
+export default wordsApi;

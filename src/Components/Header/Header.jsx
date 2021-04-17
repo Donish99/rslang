@@ -155,11 +155,12 @@ const Header = ({ history }) => {
         <ThemeProvider theme={theme}>
             <Navbar collapseOnSelect expand="lg" variant="light" bg="light">
                 <Container>
-                    <Navbar.Brand href="#">Rs-Lang</Navbar.Brand>
+                    <Navbar.Brand href="/">Rs-Lang</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
                             <NavDropdown title="Учебник" id="collasible-nav-dropdown">
+                                <NavDropdown.Item href="#wordSection">Разделы</NavDropdown.Item>
                                 <NavDropdown.Item href="#wordList">Список слов</NavDropdown.Item>
                                 <NavDropdown.Item href="#dictionary">Словарь</NavDropdown.Item>
                                 <NavDropdown.Divider />

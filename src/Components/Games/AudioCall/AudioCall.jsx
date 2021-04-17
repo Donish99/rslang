@@ -24,6 +24,8 @@ const AudioCall = () => {
   const [wrong] = useState(new Audio(wrongSound));
   const [right] = useState(new Audio(rightSound));
   const [percentage, setPercentage] = useState(0);
+  const [color, setColor] = useState(false);
+  const [colors, setColors] = useState(null);
 
   const setInitialState = async () => {
     setSound(false);
@@ -38,6 +40,8 @@ const AudioCall = () => {
     setLoading(false);
     setCurrentAudio(null);
     setPercentage(0);
+    setColor(false);
+    setColors(null);
     try {
       setLoading(true);
       const words = await utilFunctions.getUserWords();
@@ -70,17 +74,23 @@ const AudioCall = () => {
   };
 
   const showResults = (cond) => {
+    setColors(false)
     calcPercentage();
     setUserSelected(true);
     if (sound) cond ? right.play() : wrong.play();
     if (cond) {
+      setColors(true)
+      setColor(true)//првильное слово
       setCorrectWords([...correctWords, currentWord]);
     } else {
+      setColors(true)
+      setColor(false)// непрвильное слово
       setWrongWords([...wrongWords, currentWord]);
     }
   };
 
   const next = async () => {
+    setColors(false)
     if (wordList[currentIndex + 1]) {
       try {
         setLoading(true);
@@ -169,7 +179,7 @@ const AudioCall = () => {
               ) : (
                 optionWords.map((o) => (
                   <div
-                    className={styles.option}
+                    className={`${colors ? color ? styles.trueBtn : styles.falseBtn : styles.option}`}
                     key={o.id || o._id}
                     onClick={() => {
                       if (!userSelected) wordClick(o);
