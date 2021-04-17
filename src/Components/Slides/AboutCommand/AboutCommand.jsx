@@ -11,7 +11,7 @@ const AboutCommand = () => (
             <PersonCard
                 imgSrc={Akhmadullo}
                 title="Ахмадулло Нурмахаматов, разработчик"
-                text="Реализация Back-End, игр ..."
+                text="Реализация Back-End, игр."
                 gitHubLink="https://github.com/Donish99"
             />
             <PersonCard

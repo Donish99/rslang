@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-// import wordsApi from "../../../services/wordService";
+import wordsApi from "../../../services/wordService";
 import { apiUrl } from "./../../../config";
 import Music from "./Music/Music";
-import userWordApi from "../../../services/userWordService"
+// import userWordApi from "../../../services/userWordService"
 
 import './Music/Music.scss';
 import "./WordList.scss";
@@ -26,9 +26,10 @@ class WordList extends Component {
 
   async getData() {
     const { deleteWords, pages, active } = this.state
-    // const data = await wordsApi.getwords(this.props.match.params.id, pages);
-    const data = await userWordApi.getRand3Words(this.props.match.params.id, pages)
-    const deleteWordsFilter = data.data[0].paginatedResults.filter(el => !deleteWords.includes(el.id))
+    const data = await wordsApi.getwords(this.props.match.params.id, pages);
+    // const data = await userWordApi.getRand3Words(this.props.match.params.id, pages)
+    // const deleteWordsFilter = data.data[0].paginatedResults.filter(el => !deleteWords.includes(el.id))
+    const deleteWordsFilter = data.data.filter(el => !deleteWords.includes(el.id))
     this.setState({ words: deleteWordsFilter,
                     active: active });
     
@@ -57,14 +58,14 @@ class WordList extends Component {
     const deleteElem = words.findIndex(el => el.id === e.id)
     deleteWords.push(e.id)
     words.splice(deleteElem, 1);
-    userWordApi.deleteWord(e.id)
+    // userWordApi.deleteWord(e.id)
     this.setState({words: words})
   };
 
   clickPlus = (e) => {
     const { active } = this.state
-    const deleteElem = active.indexOf(e._id)
-    deleteElem !== -1 ? active.splice(deleteElem, 1) : active.push(e._id)
+    const deleteElem = active.indexOf(e.id)
+    deleteElem !== -1 ? active.splice(deleteElem, 1) : active.push(e.id)
     this.setState({active: active})
   };
 
@@ -102,12 +103,12 @@ class WordList extends Component {
           </div>
 
           {words.map((e) => (
-            <div key={e._id} className="wordsItem">
+            <div key={e.id} className="wordsItem">
               <div>
                 {e.word}: {e.transcription} - {e.wordTranslate}
                 <Music audioEl={e} />
                 <span
-                  className={`fas fa-plus-square margin ${active.includes(e._id) ? "activeCros" : " " }`}
+                  className={`fas fa-plus-square margin ${active.includes(e.id) ? "activeCros" : " " }`}
                   onClick={() => this.clickPlus(e)}
                 ></span>
                 <span
